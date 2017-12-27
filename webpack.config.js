@@ -6,7 +6,7 @@ var server = require('webpack-dev-server');
 var chalk = require('chalk');
 var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 var jsonServer = require('json-server');
-var aot = require('@ultimate/aot-loader');
+var { AotPlugin } = require('@ngtools/webpack');
 var cwd = process.cwd();
 
 module.exports = {
@@ -44,7 +44,7 @@ module.exports = {
   output: {
     chunkFilename: '[name].chunk.js',
     filename: '[name].js',
-    path: path.resolve(cwd, 'build'),
+    path: path.resolve(__dirname, 'build'),
     publicPath: '/build/',
     sourceMapFilename: '[name].map'
   },
@@ -52,7 +52,11 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        loader: '@ultimate/aot-loader'
+        loaders: [
+          'awesome-typescript-loader',
+          'angular-router-loader',
+          'angular2-template-loader'
+        ]
       },
       {
         test: /\.html/,
@@ -83,8 +87,9 @@ module.exports = {
     crypto: 'empty'
   },
   plugins: [
-    new aot.AotPlugin({
-      tsConfig: './tsconfig.json'
+    new AotPlugin({
+      tsConfigPath: './tsconfig.json',
+      entryModule: './app/app.module#AppModule'
     }),
     new webpack.DllReferencePlugin({
       context: './',

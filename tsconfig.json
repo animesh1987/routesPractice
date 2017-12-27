@@ -1,6 +1,5 @@
 {
   "angularCompilerOptions": {
-    "entryModule": "app/app.module#AppModule",
     "genDir": "./ngfactory"
   },
   "compilerOptions": {
