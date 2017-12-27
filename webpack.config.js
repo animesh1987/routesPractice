@@ -1,3 +1,6 @@
+// test
+// https://github.com/toddmotto/angular-lazy-load-demo
+
 var path = require('path');
 var fs = require('fs');
 
