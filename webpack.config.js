@@ -1,5 +1,5 @@
 // test
-// https://github.com/toddmotto/angular-lazy-load-demo
+// https://github.com/toddmotto/angular-lazy-load-demo, https://toddmotto.com/lazy-loading-angular-code-splitting-webpack
 
 var path = require('path');
 var fs = require('fs');
